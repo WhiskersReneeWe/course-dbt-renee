@@ -1,9 +1,13 @@
-SELECT 
-    id,
-    event_id,
-    session_id,
-    user_id,
-    page_url,
-    created_at,
-    event_type
-FROM {{ source('greenery', 'events') }}
+{{
+    config(
+        materialized = 'view',
+        unique_key = 'event_id'
+    )
+}}
+
+with events_src as (
+    select * from {{ source('greenery', 'events') }}
+)
+
+
+select * from events_src
