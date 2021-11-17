@@ -4,7 +4,7 @@
     config(
       target_database = 'dbt',
       target_schema ='snapshots',
-      unique_key='id',
+      unique_key='event_id',
 
       strategy='timestamp',
       updated_at='created_at'
@@ -12,6 +12,6 @@
   }}
 
   SELECT * 
-  FROM {{ source('greenery', 'events') }}
+  FROM {{ ref('stg_events') }}
 
 {% endsnapshot %}
