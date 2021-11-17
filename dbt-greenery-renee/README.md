@@ -16,11 +16,15 @@ Try running the following commands:
 
 ### short answers
 How many users do we have?
+
 ``` select count(distinct id) from users; ```
+
 130 users
 
 On average, how many orders do we receive per hour?
+
 ``` select AVG(checkouts) checkouts from (select date_trunc('hour', created_at) AS hour_of_day, count(event_id) AS checkouts from events where event_type = 'checkout' group by 1) avg_co; ```
+
 8.16 checkouts in an average hour
 
 
