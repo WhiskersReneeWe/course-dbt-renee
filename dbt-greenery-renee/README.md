@@ -34,7 +34,7 @@ Try running the following commands:
 
 3 days 22:13:10.504451
 
-``` select AVG(delivered_at - created_at) AS AVG_placed_to_delivery from orders; ```
+``` select AVG(delivered_at - created_at) AS AVG_placed_to_delivery from snapshots.orders_snapshot; ```
 
 
 4. How many users have only made one purchase? Two purchases? Three+ purchases?
@@ -45,14 +45,14 @@ Try running the following commands:
 
 81 users had 3 purchases
 
-``` select count(user_id) from (select count(order_id) AS total_orders, user_id from orders group by 2 HAVING count(order_id) = 1) one_purchase; ```
+``` select count(user_id) from (select count(order_id) AS total_orders, user_id from snapshots.orders_snapshot group by 2 HAVING count(order_id) = 1) one_purchase; ```
 
-``` select count(user_id) from (select count(order_id) AS total_orders, user_id from orders group by 2 HAVING count(order_id) = 2) two_purchase; ```
+``` select count(user_id) from (select count(order_id) AS total_orders, user_id from snapshots.orders_snapshot group by 2 HAVING count(order_id) = 2) two_purchase; ```
 
-``` select count(user_id) from (select count(order_id) AS total_orders, user_id from orders group by 2 HAVING count(order_id) >= 3) three_purchase; ```
+``` select count(user_id) from (select count(order_id) AS total_orders, user_id from snapshots.orders_snapshot group by 2 HAVING count(order_id) >= 3) three_purchase; ```
 
 5. On average, how many unique sessions do we have per hour?
 
 There are 7.4 sessions per hour on average
 
-``` select AVG(sessions) AS hourly_avg_sessions from (select date_trunc('hour', created_at) AS hourOfDay, COUNT(distinct session_id) AS sessions from events group by 1) temp; ```
+``` select AVG(sessions) AS hourly_avg_sessions from (select date_trunc('hour', created_at) AS hourOfDay, COUNT(distinct session_id) AS sessions from snapshots.events_snapshot.events group by 1) temp; ```
