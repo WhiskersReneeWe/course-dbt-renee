@@ -2,7 +2,7 @@ Welcome!
 
 
 
-### Short answers
+### Week1 Short answers
 1. How many users do we have?
 
 130 users
@@ -44,3 +44,14 @@ Welcome!
 There are 7.4 sessions per hour on average
 
 ``` select AVG(sessions) AS hourly_avg_sessions from (select date_trunc('hour', created_at) AS hourOfDay, COUNT(distinct session_id) AS sessions from snapshots.events_snapshot.events group by 1) temp; ```
+
+### Week2 Short answers
+What is our user repeat rate? Repeat Rate = Users who purchased 2 or more times / users who purchased
+
+Queries used:
+1. total distinct users ```select count(distinct user_id) from dbt_renee_liu.stg_orders```
+2. total repeat users ``` select count(user_id) from (select count(order_id) AS total_orders, user_id from stg_orders group by 2 HAVING count(order_id) > 1) one_purchase;```
+
+~ 80% repeat users.
+
+
