@@ -24,6 +24,5 @@ models:
       - name: user_id
         description: "pk for dim_customers"
         tests:
-          - unique
           - not_null
         

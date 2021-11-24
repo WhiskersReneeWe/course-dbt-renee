@@ -22,11 +22,11 @@ customer_order_items as (
     from {{ ref('stg_order_items') }}
 ),
 
-customer_fact_order as (
+fact_orders as (
 select co.order_id, user_id, coi.product_id, created_at, delivered_at, status
 from customer_orders as co
 join customer_order_items as coi
 on co.order_id = coi.order_id
 ) 
 
-select * from customer_fact_order
+select * from fact_orders

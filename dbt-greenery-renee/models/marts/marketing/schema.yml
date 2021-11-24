@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fact_user_order
+    description: "user level order events"
+    columns:
+      - name: user_id
+        description: "The identifying key (not Pk) for this table"
+        tests:
+          - not_null
+      - name: shipping_service
+        tests:
+          - accepted_values:
+              values: ['ups', 'usps']
+              config:
+                severity: warn
