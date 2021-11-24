@@ -6,9 +6,10 @@
 }}
 
 with dim_products as (
-    select product_id, 
-           name,
-           price
+    select product_guid, 
+           product_name,
+           price,
+           inventory_level
     from {{ ref('stg_products') }}
 )
 

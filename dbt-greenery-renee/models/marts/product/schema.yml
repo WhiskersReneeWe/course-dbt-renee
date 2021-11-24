@@ -1,15 +1,16 @@
 version: 2
 
 models:
-  - name: fact_page_views
-    description: "a fact table for page views from events"
+  - name: fact_user_order
+    description: "user level order events"
     columns:
-      - name: event_id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
-      - name: session_id
-        description: "each user web session"
+      - name: user_id
+        description: "The identifying key (not Pk) for this table"
         tests:
           - not_null
+      - name: shipping_service
+        tests:
+          - accepted_values:
+              values: ['ups', 'usps']
+              config:
+                severity: warn
