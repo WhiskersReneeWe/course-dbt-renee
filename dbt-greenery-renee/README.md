@@ -56,4 +56,4 @@ Queries used:
 
 
 ### Model Dag
-![Renee's first Dag](./dag_renee.png)
+![Renee's first Dag](./project2_dags.png)
