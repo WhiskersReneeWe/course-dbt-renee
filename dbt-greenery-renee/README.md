@@ -55,3 +55,5 @@ Queries used:
 ~ 80% repeat users.
 
 
+### Model Dag
+![Renee's first Dag](./dag_renee.png)
