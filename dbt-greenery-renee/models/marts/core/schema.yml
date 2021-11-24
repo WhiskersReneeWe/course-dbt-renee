@@ -9,3 +9,21 @@ models:
         tests:
           - unique
           - not_null
+      - name: user_id
+        description: "The fk for dim_customers"
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: user_id
+  
+  - name: dim_customers
+    description: "customers dimension table"
+    columns:
+      - name: user_id
+        description: "pk for dim_customers"
+        tests:
+          - unique
+          - not_null
+        

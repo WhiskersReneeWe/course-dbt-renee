@@ -23,7 +23,7 @@ customer_order_items as (
 ),
 
 customer_fact_order as (
-select co.order_id, user_id, coi.product_id, quantity, order_total, created_at, delivered_at, status
+select co.order_id, user_id, coi.product_id, created_at, delivered_at, status
 from customer_orders as co
 join customer_order_items as coi
 on co.order_id = coi.order_id
