@@ -1,15 +1,11 @@
 version: 2
 
 models:
-  - name: fact_page_views
+  - name: fact_user_sessions
     description: "a fact table for page views from events"
     columns:
-      - name: event_id
+      - name: session_guid
         description: "The primary key for this table"
         tests:
-          - unique
           - not_null
-      - name: session_id
-        description: "each user web session"
-        tests:
-          - not_null
+    

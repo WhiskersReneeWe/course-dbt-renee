@@ -1,16 +1,17 @@
 version: 2
 
 models:
-  - name: fact_user_order
-    description: "user level order events"
+  - name: fact_page_views
+    description: "total page views per user-session level"
+    tests:
+      - dbt_expectations.expect_compound_columns_to_be_unique:
+          column_list: ["session_guid", "user_guid"]
+          ignore_row_if: "any_value_is_missing" 
+      
     columns:
-      - name: user_id
-        description: "The identifying key (not Pk) for this table"
-        tests:
-          - not_null
-      - name: shipping_service
-        tests:
+       - name: event_type
+         tests:
           - accepted_values:
-              values: ['ups', 'usps']
+              values: ['page_view']
               config:
                 severity: warn
