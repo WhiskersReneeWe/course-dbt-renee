@@ -30,3 +30,5 @@ on co.order_guid = coi.order_guid
 ) 
 
 select * from fact_orders
+
+
