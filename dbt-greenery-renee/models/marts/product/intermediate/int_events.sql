@@ -11,7 +11,8 @@ with int_events as (
         event_guid, 
         session_guid,
         user_guid,
-        split_part(page_url, '/', 5) as product_guid,
+        page_url,
+        NULLIF(split_part(page_url, '/', 5), '') as product_guid,
         event_type 
     from {{ ref('stg_events') }}
 )

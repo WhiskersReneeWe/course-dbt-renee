@@ -2,24 +2,6 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
-
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
-
   - name: stg_superheroes
     description: "Demographics about each superhero such as name, hair color, height and weight."
     columns:
@@ -39,6 +21,25 @@ models:
 
   - name: stg_events
     description: "order events with user_id, session_id, page_url, event_type"
+    tests:
+      - dbt_expectations.expect_compound_columns_to_be_unique:
+          column_list: ["session_guid", "event_guid"]
+          ignore_row_if: "any_value_is_missing" 
+
+    columns:
+      - name: event_guid
+        tests:
+          - not_null
+          - unique
+      - name: session_guid
+        tests:
+          - not_null
+      - name: event_type
+        tests:
+          - not_null
+      - name: page_url
+        tests:
+          - not_null
 
   - name: stg_order_items
     description: "documents one order id with one product id and its ordered quantities"

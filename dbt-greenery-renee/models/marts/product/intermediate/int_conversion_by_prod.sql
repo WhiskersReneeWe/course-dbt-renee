@@ -17,7 +17,7 @@ with conversion_by_prod_guid as(
 select
       product_guid,
       {% for event_type in event_types['event_type'] %}
-    sum(case when event_type = '{{ event_type }}' then 1 end) as total_{{ event_type }}
+    sum(case when event_type = '{{ event_type }}' then 1 else 0 end) as total_{{ event_type }}
     {{ "," if not loop.last }}
     {% endfor %}
   

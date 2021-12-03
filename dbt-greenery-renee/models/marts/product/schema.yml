@@ -1,6 +1,15 @@
 version: 2
 
 models:
+  - name: int_events
+    description: "split pageurl from stg events"
+    columns:
+      - name: product_guid
+        tests:
+          - not_null:
+              severity: warn
+
+
   - name: fact_page_views
     description: "total page views per user-session level"
     tests:
