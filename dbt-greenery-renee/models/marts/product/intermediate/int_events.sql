@@ -18,7 +18,6 @@ with int_events as (
     order by user_guid, session_guid, product_guid
 )
 
-
 select * from int_events
 
 -- How does a user decide to checkout a product

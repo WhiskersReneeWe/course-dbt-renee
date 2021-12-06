@@ -54,6 +54,10 @@ Queries used:
 
 ~ 80% repeat users.
 
+### week 3 short answers
+1. null
+2. Product conversion rate is (but they are not realistic)
+![Product conversion rate](./prod_conv_rate.png)
 
 ### Model Dag
 ![Renee's first Dag](./project2_dags.png)
