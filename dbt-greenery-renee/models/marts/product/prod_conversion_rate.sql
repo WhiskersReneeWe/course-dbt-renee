@@ -17,6 +17,9 @@ with temp_prod as (
 
 select * from temp_prod
 
+-- use this query to find out conversion rate by product
+-- product_guid, co_counts/all_counts::decimal as conversion_rate from dbt_renee_liu.fin_conversion_by_prod;
+
 
 
 
