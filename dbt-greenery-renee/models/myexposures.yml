@@ -1,0 +1,16 @@
+version: 2
+exposures:
+  
+  - name: product_funnel_conversion_analysis
+    type: dashboard
+    maturity: high
+    
+    
+    depends_on:
+      - ref('int_total_sessions')
+      - ref('fact_events')
+      - ref('stg_events')
+      
+    owner:
+      name: Renee Liu
+      email: renee@bigeye.com

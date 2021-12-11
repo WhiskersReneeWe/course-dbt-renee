@@ -38,7 +38,7 @@ models:
     example:
       +materialized: view
 
-on-run-end: 
-    - "grant usage on schema {{ target.schema }} to reporting"
-    - "grant select on all tables in schema {{ target.schema }} to reporting"
+#on-run-end: 
+    #- "grant usage on schema {{ target.schema }} to reporting"
+    #- "grant select on all tables in schema {{ target.schema }} to reporting"
 
