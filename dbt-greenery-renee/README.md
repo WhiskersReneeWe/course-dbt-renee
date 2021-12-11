@@ -61,3 +61,8 @@ Queries used:
 
 ### Model Dag
 ![Renee's first Dag](./project2_dags.png)
+
+### Week 4 
+![Product funnel conversion analysis](./product_funnel_result.png)
+
+Reflection 2B: I want to look into the meta data on testing to see if I can create tests with lineage data to track how data quality issues are originated and pertuated downstream
